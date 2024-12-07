@@ -1,0 +1,9 @@
+.comment {
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .comment strong {
+    font-weight: bold;
+  }
+  

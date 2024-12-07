@@ -1,0 +1,114 @@
+/* General Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Landing Page */
+.landing-page {
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+  
+}
+
+.Image {
+  width: 60%;
+  height: 500px;
+  background-color: #6555e1;
+  background-image: url('../../../public/revol.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.Head {
+  height: fit-content;
+  max-width: 60%;
+  min-width: 200px;
+  border-radius: 30px;
+}
+.Head P{
+  padding: 10px;
+}
+
+.landing-page h1 {
+  font-size: 2rem; /* Slightly smaller */
+  margin-bottom: 20px;
+}
+
+.landing-page p {
+  font-size: 1rem; /* Slightly smaller */
+  margin-bottom: 30px;
+}
+
+/* Landing Buttons */
+.landing-buttons button {
+  margin: 10px 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #242628;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.landing-buttons button:hover {
+  background-color: #0a0c0e;
+}
+
+/* Button Styling */
+button {
+  width: 80%;
+  padding: 10px;
+  background-color: #8ca7f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.formdiv input{
+width: 80%;
+}
+button:hover {
+  background-color: #6555e1;
+}
+.landing-buttons{
+  border-radius: 30px;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .landing-page {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .Image {
+    width: 100%;
+    height: 300px; /* Adjust height for smaller screens */
+    margin: 0 0 20px 0; /* Add margin below the image */
+  }
+  
+  .Head {
+    width: 100%;
+  }
+  
+  .landing-page h1 {
+    font-size: 1.5rem; /* Smaller font size on small screens */
+  }
+  
+  .landing-page p {
+    font-size: 0.9rem; /* Smaller font size on small screens */
+  }
+}

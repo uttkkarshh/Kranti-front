@@ -1,0 +1,69 @@
+
+  
+  .Register {
+    background-color: #ffffff;
+    max-height: 90vh;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .Register h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .Register form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Register label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+ .Register input[type="text"],
+ .Register input[type="email"],
+ .Register input[type="password"],
+ .Register textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .Register textarea {
+    resize: vertical;
+  }
+  
+  .Register button[type="submit"] {
+    background-color: #2e3235;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px auto;
+    transition: background-color 0.3s;
+  }
+  
+  .Register  button[type="submit"]:hover {
+    background-color: #181a1c;
+  }
+  
+.Register  p {
+    color: #d9534f;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
