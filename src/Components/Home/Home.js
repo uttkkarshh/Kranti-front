@@ -33,23 +33,25 @@ const HomePage = ({ userDet, onLogout }) => {
     <div className="home-page">
       {user ? (
         <>
-          <header className="header">
+          <div className="header">
             <img src="https://deadline.com/wp-content/uploads/2018/08/taxidriver.png" alt="User Profile" className="profile-image" onClick={toggleModal} />
-          </header>
-
+            
           {showModal && (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={toggleModal}>&times;</span>
-                <h1>{user.username}</h1>
-                <p>{user.bio}</p>
-                <p>Your Score: {user.score}</p>
-                <button onClick={handleLogout} className="logout-button">
-                  Logout
-                </button>
-              </div>
-            </div>
-          )}
+          
+          <div className="modal-content">
+            <div>
+            <span className="close" onClick={toggleModal}>&times;</span>
+            <h1>{user.username}</h1>
+            <p>{user.bio}</p>
+      </div>
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+          </div>
+       
+      )}
+          </div>
+
 
           <div className="layout">
             <nav className="navigation">

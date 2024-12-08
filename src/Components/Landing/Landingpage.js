@@ -34,9 +34,9 @@ const LandingPage = ({setUser}) => {
       <div className="Image">
       </div>
       <div className="Head">
-      <h1>Kranti </h1>
-      <p>
-      तुम ही कल के हो शिवाजी, तुम ही कल के हो सिकंदर !</p>
+       <h1>Kranti </h1>
+       <p>
+       तुम ही कल के हो शिवाजी, तुम ही कल के हो सिकंदर !</p>
       <div className="landing-buttons">
     
       <h1>Login</h1>

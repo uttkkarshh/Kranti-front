@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Post from "./Post/Post";
 import { getAllPosts } from "../../Services/postService"; // Assuming this fetches posts from the backend
-import "./Profile.css"
+
 const PostFeed = () => {
   const [posts, setPosts] = useState([]);
 
