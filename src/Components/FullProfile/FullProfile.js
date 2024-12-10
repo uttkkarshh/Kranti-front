@@ -10,10 +10,10 @@ const FullProfile = ({  userData }) => {
   useEffect(() => {
     const fetchUserPosts = async () => {
       try {
-        console.log(userData)
+      
        const response=await getPostsByuser(userData.id);
         setPosts(response.data);
-        console.log(response.data)
+        
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user posts:", error);

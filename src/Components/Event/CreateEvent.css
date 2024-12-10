@@ -1,8 +1,10 @@
 .create-event {
     max-width: 600px;
     margin: 0 auto;
+    width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
+    margin-top: 10px;
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

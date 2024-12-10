@@ -8,9 +8,10 @@ import SearchUsers from '../User/SearchUsers';
 import PostCreator from "../PostCreator/postCreator";
 import PostFeed from "../Feed/PostFeed";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBell, faPlusSquare, faSearch ,faUser} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBell, faPlusSquare, faSearch ,faUser,facalendar, faCalendar} from '@fortawesome/free-solid-svg-icons';
 import Profile from "../Feed/Profile";
 import FullProfile from "../FullProfile/FullProfile";
+import SearchEvents from "../Event/SearchEvent";
 
 const HomePage = ({ userDet, onLogout }) => {
   const [user, setUser] = useState(null);
@@ -72,6 +73,12 @@ const HomePage = ({ userDet, onLogout }) => {
                     <span>Search</span>
                   </Link>
                 </li>
+                 <li>
+                  <Link to="/home/searchevent">
+                    <FontAwesomeIcon icon={faCalendar} />
+                    <span>Search Event</span>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/home">
                     <FontAwesomeIcon icon={faHome} />
@@ -84,6 +91,7 @@ const HomePage = ({ userDet, onLogout }) => {
                     <span>Profile</span>
                   </Link>
                 </li>
+                
               </ul>
             </nav>
 
@@ -96,6 +104,7 @@ const HomePage = ({ userDet, onLogout }) => {
                 <Route path="feed" element={<Feed />} />
                 <Route path="notifications" element={<NotificationFeed />} />
                 <Route path="" element={<PostFeed />} />
+                <Route path="searchevent" element={<SearchEvents />} />
               </Routes>
             </main>
           </div>
