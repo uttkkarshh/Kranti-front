@@ -1,0 +1,59 @@
+.post-creator {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-creator h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .post-creator form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .post-creator .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .post-creator label {
+    font-weight: bold;
+  }
+  
+  .post-creator input,
+  .post-creator textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .post-creator button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #242628;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .post-creator button:hover {
+    background-color: #000000;
+  }
+  
+  .post-creator .message {
+    text-align: center;
+    color: green;
+  }
+  

@@ -1,0 +1,35 @@
+/* FullProfile Styles */
+.full-profile {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .profile-section {
+    margin-bottom: 20px;
+  }
+  
+  /* Grid layout for posts */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 10px;
+  }
+  
+  .post-item {
+    width: 100%;
+    padding-top: 100%; /* Aspect ratio for square items */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .post-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

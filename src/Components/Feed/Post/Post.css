@@ -71,6 +71,16 @@
   }
   
   .comments-section button:hover {
-    background-color: #218838;
+    background-color: #000000;
   }
+  .add-comment button {
+   width: fit-content;
+   flex-grow: -1;
+  }
+  
+  .add-comment{
+    display: flex;
+
+  }
+  
   

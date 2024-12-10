@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { searchUsersByName } from '../../Services/userService';
 import "./Search.css"
+import Profile from"../Feed/Profile"
 function SearchUsers() {
   const [name, setName] = useState('');
-  const [results, setResults] = useState([]);
+  const [users, setResults] = useState([]);
 
   const handleSearch = async () => {
     try {
@@ -11,7 +12,7 @@ function SearchUsers() {
       console.log(response)
       setResults(response.data);
       console.log(response.data)
-      results.map((user) => (console.log(user)))
+      
     } catch (error) {
       console.error('Search Failed:', error);
       alert('Error searching users.');
@@ -23,12 +24,19 @@ function SearchUsers() {
       <h1>Search Users</h1>
       <input type="text" placeholder="Search by name" value={name} onChange={(e) => setName(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
-      <ul>
-        {results && results.map((user) => (
-          <li key={user.id}>{user.name}</li>
-          
-        ))}
-      </ul>
+      {users && users.length > 0 ? (
+          users.map((user) => (
+            <Profile
+              key={user.id}
+              name={user.username}
+              bio={user.bio}
+              id={user.id}
+              profilePicture={user.profilePicture}
+            />
+          ))
+        ) : (
+          <p>No users found.</p>
+        )}
     </div>
   );
 }

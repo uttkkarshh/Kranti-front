@@ -1,0 +1,16 @@
+.follow-list {
+    max-width: 100%; /* Adjust based on your layout */
+    max-height: 300px; /* Set a fixed height for the list container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border for visual clarity */
+    padding: 10px; /* Optional: Add padding */
+    background-color: #f9f9f9; /* Optional: Background color for better visuals */
+    border-radius: 5px; /* Optional: Rounded corners */
+  }
+  
+  .list-div {
+    display: flex;
+    flex-direction: column; /* Ensure users are stacked vertically */
+    gap: 10px; /* Optional: Space between items */
+  }
+  

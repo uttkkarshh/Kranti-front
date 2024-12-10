@@ -6,6 +6,7 @@ import Comment from "../Comment/Comment";
 import { likePost } from "../../../Services/postService";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 const Post = ({ post }) => {
   const [likes, setLikes] = useState(post.likesCount || 0); // Track likes
   const [comments, setComments] = useState([]); // Track comments
@@ -19,7 +20,7 @@ const Post = ({ post }) => {
       try {
         const response = await getUserById(userId);
         setAuthor(response.data);
-       
+      
       } catch (error) {
         console.error("Error loading user:", error);
       }
@@ -122,14 +123,14 @@ console.log(err.message)
           </ul>
 
           {/* Add Comment */}
-          <form onSubmit={handleCommentSubmit}>
+          <form className="add-comment"onSubmit={handleCommentSubmit}>
             <input
               type="text"
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Add a comment..."
             />
-            <button type="submit">Submit</button>
+            <button type="submit"><FontAwesomeIcon icon={faCommentDots} /></button>
           </form>
         </div>
       )}

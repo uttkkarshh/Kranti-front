@@ -7,6 +7,7 @@ export const getPostById = (id) => api.get(`/posts/${id}`); // Endpoint for fetc
 export const deletePost = (id) => api.delete(`/posts/${id}`); // Endpoint for deleting a post
 // Like a post
 export const likePost = (postId) => api.post(`/posts/${postId}/like`);
-
+export const getAllPostsforuser = (id) => api.get(`/posts/postforuser/${id}`); // Endpoint for fetching all posts
 // Unlike a post
 export const unlikePost = (postId) => api.post(`/posts/${postId}/unlike`);
+export const getPostsByuser = (id) => api.get(`/posts/user/${id}`); // Endpoint for fetching all posts

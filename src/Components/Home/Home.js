@@ -8,7 +8,9 @@ import SearchUsers from '../User/SearchUsers';
 import PostCreator from "../PostCreator/postCreator";
 import PostFeed from "../Feed/PostFeed";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBell, faPlusSquare, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBell, faPlusSquare, faSearch ,faUser} from '@fortawesome/free-solid-svg-icons';
+import Profile from "../Feed/Profile";
+import FullProfile from "../FullProfile/FullProfile";
 
 const HomePage = ({ userDet, onLogout }) => {
   const [user, setUser] = useState(null);
@@ -34,34 +36,24 @@ const HomePage = ({ userDet, onLogout }) => {
       {user ? (
         <>
           <div className="header">
-            <img src="https://deadline.com/wp-content/uploads/2018/08/taxidriver.png" alt="User Profile" className="profile-image" onClick={toggleModal} />
-            
-          {showModal && (
-          
-          <div className="modal-content">
-            <div>
-            <span className="close" onClick={toggleModal}>&times;</span>
-            <h1>{user.username}</h1>
-            <p>{user.bio}</p>
-      </div>
+           {! showModal &&(<img src={user.profilePicture} alt="User Profile" className="profile-image" onClick={toggleModal} />)}
             <button onClick={handleLogout} className="logout-button">
               Logout
             </button>
+          {showModal && (
+          <div onClick={toggleModal}  >
+            <Profile name={user.name} bio={user.bio} id={user.userId} profilePicture={user.profilePicture} self={true}/>
           </div>
        
       )}
+      
           </div>
 
 
           <div className="layout">
             <nav className="navigation">
               <ul>
-                <li>
-                  <Link to="/home/feed">
-                    <FontAwesomeIcon icon={faHome} />
-                    <span>Feed</span>
-                  </Link>
-                </li>
+                
                 <li>
                   <Link to="/home/notifications">
                     <FontAwesomeIcon icon={faBell} />
@@ -86,13 +78,21 @@ const HomePage = ({ userDet, onLogout }) => {
                     <span>Post Feed</span>
                   </Link>
                 </li>
+                <li>
+                  <Link to="/home/profile">
+                    <FontAwesomeIcon icon={faUser} />
+                    <span>Profile</span>
+                  </Link>
+                </li>
               </ul>
             </nav>
 
             <main className="content">
               <Routes>
+                
+                <Route path="profile" element={<FullProfile userData={user}/>}/>
                 <Route path="search" element={<SearchUsers />} />
-                <Route path="create" element={<PostCreator />} />
+                <Route path="create" element={<PostCreator  user={user} />} />
                 <Route path="feed" element={<Feed />} />
                 <Route path="notifications" element={<NotificationFeed />} />
                 <Route path="" element={<PostFeed />} />

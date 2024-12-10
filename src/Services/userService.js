@@ -12,3 +12,6 @@ export const rejectFollowRequest = (id, followerId) =>
   api.post(`/users/${id}/followreject?follwerId=${ followerId }`);
 export const findUser=(name)=> api.get(`users/user?name=${name}`)
 export const getnotification=(id)=> api.get(`/follow/${id}/request`)
+export const getfollowers=(id)=>api.get(`/follow/${id}/followers`)
+export const getfollowing=(id)=>api.get(`/follow/${id}/following`)
+export const createEvent=(eventData)=>api.post('/events/create',eventData)
