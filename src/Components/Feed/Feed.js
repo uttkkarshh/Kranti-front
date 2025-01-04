@@ -33,6 +33,7 @@ function Feed() {
               bio={user.bio}
               id={user.id}
               profilePicture={user.profilePicture}
+              self={false}
             />
           ))
         ) : (

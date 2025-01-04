@@ -92,10 +92,10 @@ const user = { name, bio, id, profilePicture };
     <div className="list-button">
       <button onClick={handleFetchFollowers} className="followlist">Followers</button>
       <button onClick={handleFetchFollowing}className="followlist" >Following</button>
-      </div>
-      <button onClick={handleFollow} className="follow-btn">
+      
+      <button onClick={handleFollow} className="followlist">
         {isFollowing ? "Unfollow" : "Follow"}
-      </button>
+      </button></div>
     </>)}
     {followersbool && <UserList className="follow-list" user={followerslist} head={'Followers'}/>}
     {followingbool && <UserList  className="follow-list" head ={'Following'} user={followinglist}/>}

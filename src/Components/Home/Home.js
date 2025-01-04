@@ -12,7 +12,7 @@ import { faHome, faBell, faPlusSquare, faSearch ,faUser,facalendar, faCalendar} 
 import Profile from "../Feed/Profile";
 import FullProfile from "../FullProfile/FullProfile";
 import SearchEvents from "../Event/SearchEvent";
-
+import Create from "../Create/Create"
 const HomePage = ({ userDet, onLogout }) => {
   const [user, setUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -38,15 +38,16 @@ const HomePage = ({ userDet, onLogout }) => {
         <>
           <div className="header">
            {! showModal &&(<img src={user.profilePicture} alt="User Profile" className="profile-image" onClick={toggleModal} />)}
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-          {showModal && (
+           {showModal && (
           <div onClick={toggleModal}  >
             <Profile name={user.name} bio={user.bio} id={user.userId} profilePicture={user.profilePicture} self={true}/>
           </div>
        
       )}
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+        
       
           </div>
 
@@ -100,7 +101,7 @@ const HomePage = ({ userDet, onLogout }) => {
                 
                 <Route path="profile" element={<FullProfile userData={user}/>}/>
                 <Route path="search" element={<SearchUsers />} />
-                <Route path="create" element={<PostCreator  user={user} />} />
+                <Route path="create" element={<Create  />} />
                 <Route path="feed" element={<Feed />} />
                 <Route path="notifications" element={<NotificationFeed />} />
                 <Route path="" element={<PostFeed />} />

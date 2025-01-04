@@ -3,9 +3,23 @@ import Profile from "../Feed/Profile"
 import "./FullProfile.css";
 import { getPostsByuser } from "../../Services/postService";
 import Post from "../Feed/Post/Post"
-const FullProfile = ({  userData }) => {
+import { useLocation } from 'react-router-dom';
+const FullProfile = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+ 
+  const location = useLocation(); 
+  const initialUserData = location.state?.userData || null; 
+  const [userData, setUserData] = useState(initialUserData);
+   useEffect(() =>{ 
+    if (!userData) 
+    { const userString = localStorage.getItem("user");
+       if (userString) {
+       setUserData(JSON.parse(userString));
+       } 
+     }
+     }, 
+     [userData]);
 
   useEffect(() => {
     const fetchUserPosts = async () => {

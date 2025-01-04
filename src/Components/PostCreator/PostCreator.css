@@ -1,7 +1,8 @@
 .post-creator {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    margin: 10px auto;
+    padding:  20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
@@ -17,16 +18,19 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
   }
   
   .post-creator .form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    flex: 1 1 100%;
   }
   
   .post-creator label {
     font-weight: bold;
+    
   }
   
   .post-creator input,
@@ -40,6 +44,8 @@
   .post-creator button {
     padding: 10px 20px;
     border: none;
+    display: block;
+    margin: 0 auto;
     border-radius: 5px;
     background-color: #242628;
     color: white;

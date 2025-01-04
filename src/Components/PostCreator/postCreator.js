@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createPost } from "../../Services/postService"; // Import the API function
 //import "./PostCreator.css"; // Optional: Add styling
 import CreateEvent from "../Event/CreateEvent";
 import "./PostCreator.css"
-function PostCreator({ onPostCreated, events ,user}) {
+function PostCreator({ onPostCreated, events }) {
   const [formData, setFormData] = useState({
     "content": "This is my first post! Excited to share updates here.",
-  "userId": user.id,
+  "userId": 1,
   "title": "My 2Post"
   });
 
   const [message, setMessage] = useState("");
-
+  const[user,setUser]=useState();
+  useEffect(()=>{
+    const userString = localStorage.getItem("user");
+    if (userString) {
+    setUser(JSON.parse(userString));
+    } 
+  },[])
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,7 +32,10 @@ function PostCreator({ onPostCreated, events ,user}) {
     e.preventDefault();
     try {
       // Call the API to create the post
-      
+      setFormData((prevData) => ({
+        ...prevData,
+        "userId": user.id,
+      }));
       const response = await createPost(formData);
       setMessage("Post created successfully!");
        // Callback to refresh the feed or parent component
@@ -75,7 +84,7 @@ function PostCreator({ onPostCreated, events ,user}) {
         </button>
       </form>
     </div>
-    <CreateEvent/>
+  
     </>
   );
 }

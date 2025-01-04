@@ -17,3 +17,14 @@ export const getfollowing=(id)=>api.get(`/follow/${id}/following`)
 export const createEvent=(eventData)=>api.post('/events/create',eventData)
 export const searchEventsByTitle=(title)=>api.get(`events/title/${title}`)
 export const searchEventsByLocation=(data)=>api.get(`events/nearby?latitude=${data.latitude}&longitude=${data.longitude}&radius=${data.radius}`)
+// Follow an event
+export const followEvent = (eventId, userId) => 
+  api.post(`/events/${eventId}/follow/${userId}`);
+
+// Unfollow an event
+export const unfollowEvent = (eventId, userId) => 
+  api.post(`/events/${eventId}/unfollow/${userId}`);
+
+// Add a post to an event
+export const addPostToEvent = (eventId, postId) => 
+  api.post(`/events/${eventId}/posts`, { postId });

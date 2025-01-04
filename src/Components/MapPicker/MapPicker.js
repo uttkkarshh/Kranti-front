@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-const MapPicker = ({ onLocationSelect }) => {
+const MapPicker = ({ onLocationSelect, center = [23.5120, 80.3290], zoom = 13 }) => {
   const [position, setPosition] = useState(null);
 
   const LocationMarker = () => {
@@ -18,8 +18,8 @@ const MapPicker = ({ onLocationSelect }) => {
 
   return (
     <MapContainer
-      center={[23.5120, 80.3290]} // Default center
-      zoom={13}
+      center={center} // Use provided center or default
+      zoom={zoom} // Use provided zoom or default
       style={{ height: "400px", width: "100%" }}
     >
       <TileLayer

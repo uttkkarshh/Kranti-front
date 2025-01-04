@@ -44,6 +44,7 @@ function SearchEvents() {
     <>
     <div className="Search">
       <h1>Search Events</h1>
+      
       <input
         type="text"
         placeholder="Search by event title"
