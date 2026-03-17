@@ -3,7 +3,7 @@ import "./Post.css";
 import { getUserById } from "../../../Services/userService";
 import { getCommentsByPostId, createComment } from "../../../Services/commentService";
 import Comment from "../Comment/Comment";
-import { likePost } from "../../../Services/postService";
+import { likePost, getPostById } from "../../../Services/postService";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons'
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
@@ -69,15 +69,18 @@ const Post = ({ post }) => {
   };
 
   // Handle like button click
-  const handleLike = async(postId,lik) => {
-    try{
-      setLikes(lik+1);
-   await likePost(postId);
+  const handleLike = async (postId) => {
+    // TODO: replace hardcoded userId with actual logged-in user
+    const userId = 5;
+    try {
+      const response = await likePost(postId, userId);
+      // only update after server processed the request
+      // the backend may not change the count if already liked
+      const updatedPost = await getPostById(postId);
+      setLikes(updatedPost.data.likesCount || likes);
+    } catch (err) {
+      console.log(err.message);
     }
-    catch(err){
-console.log(err.message)
-    }
-    // Call API to update likes on the server (e.g., likePost(post.id))
   };
 
   return (
@@ -103,7 +106,7 @@ console.log(err.message)
 
       {/* Post Actions */}
       <div className="post-actions">
-      <button onClick={() => handleLike(post.id,likes)}><FontAwesomeIcon icon={faThumbsUp} /> ({likes})</button>
+      <button onClick={() => handleLike(post.id)}><FontAwesomeIcon icon={faThumbsUp} /> ({likes})</button>
 
         <button onClick={handleToggleComments}>
         <FontAwesomeIcon icon={faComment} /> {showComments ? "Hide Comments" : "View Comments"}

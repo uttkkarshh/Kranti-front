@@ -1,0 +1,22 @@
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  background-color: #3b3636;
+  margin: 5px;
+ border-radius: 10px;
+} 
+.profile-container button{
+    background-color: #1a1717;
+    width: 80%;
+  }
+.profile-container button:hover {
+    background-color: #000000;
+width: 80%;
+  }
+  .profile-exinfo{
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+  }

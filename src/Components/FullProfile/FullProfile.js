@@ -49,7 +49,7 @@ const FullProfile = () => {
         <Profile
           name={userData.name}
           bio={userData.bio}
-          id={userData.userId}
+          id={userData.id}
           profilePicture={userData.profilePicture}
           self={true}
         />

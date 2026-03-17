@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
 import "./HomePage.css";
 import Feed from '../Feed/Feed';
 import NotificationFeed from '../Notification/NotificationFeed';
@@ -9,22 +10,19 @@ import PostCreator from "../PostCreator/postCreator";
 import PostFeed from "../Feed/PostFeed";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBell, faPlusSquare, faSearch ,faUser,facalendar, faCalendar} from '@fortawesome/free-solid-svg-icons';
-import Profile from "../Feed/Profile";
+
 import FullProfile from "../FullProfile/FullProfile";
 import SearchEvents from "../Event/SearchEvent";
 import Create from "../Create/Create"
-const HomePage = ({ userDet, onLogout }) => {
-  const [user, setUser] = useState(null);
+import ProfileCard from "../common/ProfileCard";
+const HomePage = () => {
+  const { user, setUser } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setUser(userDet);
-  }, [userDet]);
-
   const handleLogout = () => {
+    setUser(null);
     localStorage.removeItem("token");
-    if (onLogout) onLogout();
     navigate("/");
   };
 
@@ -37,25 +35,19 @@ const HomePage = ({ userDet, onLogout }) => {
       {user ? (
         <>
           <div className="header">
-           {! showModal &&(<img src={user.profilePicture} alt="User Profile" className="profile-image" onClick={toggleModal} />)}
-           {showModal && (
-          <div onClick={toggleModal}  >
-            <Profile name={user.name} bio={user.bio} id={user.userId} profilePicture={user.profilePicture} self={true}/>
-          </div>
-       
-      )}
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
-        
       
           </div>
 
 
           <div className="layout">
+        
             <nav className="navigation">
+               <div className="profile-info">
+                      <ProfileCard  logout={handleLogout} name={user.name} bio={user.bio} profilePicture={user.profilePicture}/>
+                      </div>
               <ul>
-                
+                   
+                 
                 <li>
                   <Link to="/home/notifications">
                     <FontAwesomeIcon icon={faBell} />

@@ -1,45 +1,50 @@
-import React from "react";
-import  { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import userService from "../../Services/userService"
 import { followUser } from "../../Services/userService";
 import "./Profile.css"
 import { getfollowers,getfollowing } from "../../Services/userService";
 import UserList from"../UserList/UserList"
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../../Contexts/UserContext";
 function Profile({ name, bio ,id,profilePicture ,self}) {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [error, setError] = useState("");
   const[followerslist,setFollowers]=useState([]);
   const[followinglist,setFollowing]=useState([]);
   const[followersbool,Setfollowerbool]=useState(false);
   const[followingbool,Setfollowingbool]=useState(false);
   const navigate = useNavigate();
-  const handleFollow = async(userId, isFollowing) => {
-    console.log(
-      `${isFollowing ? "Followed" : "Unfollowed"} user with ID: ${userId}`
-    );
-    const jsonString = localStorage.getItem("user");
-    const parsedObject = JSON.parse(jsonString);
-    //console.log(parsedObject)
-    
-      await followUser(id, parsedObject.id) .then(response => {
-        console.log('Success:', response.data);
-      })
-      .catch(error => {
-        if (error.response) {
-          // The server responded with an error status code (e.g., 400, 500)
-        
-          alert(`Error: ${error.response.data}`); // Display the error message to the user
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error('No response received:', error.request);
-        } else {
-          // Something happened in setting up the request
-          console.error('Error:', error.message);
-        }
-      });
-    
-    // Example: Make an API call here
-    // await fetch(`/api/users/${userId}/follow`, { method: 'POST', body: JSON.stringify({ isFollowing }) });
+  const { user: currentUser } = useContext(UserContext);
+
+  const handleFollow = async (userId) => {
+    console.log('handleFollow called with', userId, 'currentUser', currentUser);
+    if (!currentUser?.id) {
+      console.warn('no current user available for follow');
+      setError('You must be logged in to follow users.');
+      return;
+    }
+
+    try {
+      const response = await followUser(userId, currentUser.id);
+      console.log('Follow API success:', response.data);
+      setIsFollowing(true);
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          'Follow error – status',
+          error.response.status,
+          'data',
+          error.response.data
+        );
+        setError(`Unable to follow user: ${error.response.data.message || 'Unknown error'}`);
+      } else if (error.request) {
+        console.error('No response received for follow request:', error.request);
+        setError('No response from server. Please try again later.');
+      } else {
+        console.error('Error setting up follow request:', error.message);
+        setError('Unexpected error occurred');
+      }
+    }
   };
    // Fetch followers list on "Followers" button click
    const handleFetchFollowers = async () => {
@@ -88,12 +93,13 @@ const user = { name, bio, id, profilePicture };
                 <h2 className="user-name">{name}</h2>
                 <p className="user-bio">{bio}</p>
             </div>
+            {error && <p className="error-text">{error}</p>}
     { !bol && (<>
     <div className="list-button">
       <button onClick={handleFetchFollowers} className="followlist">Followers</button>
       <button onClick={handleFetchFollowing}className="followlist" >Following</button>
       
-      <button onClick={handleFollow} className="followlist">
+      <button onClick={() => handleFollow(id)} className="followlist">
         {isFollowing ? "Unfollow" : "Follow"}
       </button></div>
     </>)}

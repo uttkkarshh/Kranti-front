@@ -4,6 +4,7 @@ export const login = (user) => api.post('users/login', user);
 export const register = (user) => api.post('users/register', user);
 export const getUserById = (id) => api.get(`/users/${id}`);
 export const getAllUsers = () => api.get('/users/allusers');
+
 export const searchUsersByName = (name) => api.get(`/users/search?name=${name}`);
 export const followUser = (id, followerId) => api.post(`/users/${id}/follow?followerId=${followerId}`);
 export const approveFollowRequest = (requestId) =>
@@ -28,3 +29,8 @@ export const unfollowEvent = (eventId, userId) =>
 // Add a post to an event
 export const addPostToEvent = (eventId, postId) => 
   api.post(`/events/${eventId}/posts`, { postId });
+
+// Get current user
+export const getCurrentUser = () => api.get('/users/me');
+
+

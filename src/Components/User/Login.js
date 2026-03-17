@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {login } from "../../Services/userService"
 import { saveToken } from "../../Utils/auth"; // Save JWT token
+import { UserContext } from "../../Contexts/UserContext";
 
 import { useNavigate } from "react-router-dom";
 
-function Login({ setUser }) {
+function Login() {
+  const { setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
